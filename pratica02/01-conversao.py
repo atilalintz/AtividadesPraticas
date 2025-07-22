@@ -16,5 +16,5 @@ conver_dolar = reais / dolar
 conver_euro = reais / euro
 
 print(f"Conversão de R$100,00 Reais para Dólar da ${conver_dolar:.2f}")
-print(f"Conversão de R$100,00 Reais para Euro da ${conver_euro:.2f}")
+print(f"Conversão de R$100,00 Reais para Euro da €{conver_euro:.2f}")
 
