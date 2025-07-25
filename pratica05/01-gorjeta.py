@@ -55,4 +55,4 @@ print(f"Porcentagem da Gorjeta: {porcentagem_gorjeta:.0f}%")
 print(f"Valor da Gorjeta: R$ {gorjeta_calculada:.2f}")
 print(f"Valor Total a Pagar (Conta + Gorjeta): R$ {valor_total_com_gorjeta:.2f}")
 
-print("\n--- Operação Concluída ---")
+print("\n--- Operação Concluída Muito Obrigado ---")
