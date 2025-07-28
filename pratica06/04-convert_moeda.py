@@ -34,7 +34,7 @@ def consultar_cotacao_moeda():
     responsta_url = f"https://economia.awesomeapi.com.br/last/{moeda}-BRL"
 
     tentativas_maximas = 3  # Número máximo de tentativas
-    atraso_inicial = 1     # Atraso inicial em segundos
+    atraso_inicial = 4     # Atraso inicial em segundos
     
     for tentativa in range(tentativas_maximas):
         try:
