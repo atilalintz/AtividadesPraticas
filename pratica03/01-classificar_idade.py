@@ -11,7 +11,10 @@ em uma das seguintes categorias:
 """
 num = int(input("Informe sua idade:"))
 
-if num <= 11:
+if num < 0:
+    print("Idade inválida. Por favor, insira uma idade não negativa.")
+    exit()
+elif num <= 12:
     print(f"Você é uma criança.")
 elif  num <= 17:
     print(f"Você é Adolecente.")
