@@ -31,55 +31,55 @@ def consultar_cotacao_moeda():
         else:
             break
 
-    responsta_url = f"https://economia.awesomeapi.com.br/last/{moeda}-BRL"
+    responstaUrl = f"https://economia.awesomeapi.com.br/last/{moeda}-BRL"
 
-    tentativas_maximas = 3  # Número máximo de tentativas
-    atraso_inicial = 1     # Atraso inicial em segundos
+    tentativasMaximas = 3  # Número máximo de tentativas
+    atrasoInicial = 1     # Atraso inicial em segundos
     
-    for tentativa in range(tentativas_maximas):
+    for tentativa in range(tentativasMaximas):
         try:
-            response = requests.get(responsta_url)
+            response = requests.get(responstaUrl)
             response.raise_for_status()  # Lança um erro para status de resposta HTTP ruins (4xx ou 5xx)
             
             dados = response.json()
 
             # A chave no JSON retornado é a moeda_BRL (ex: USDBRL, EURBRL)
-            chave_moeda_brl = f"{moeda}BRL"
+            chaveMoedaBRL = f"{moeda}BRL"
 
             if "erro" in dados and dados["erro"]: # Embora a AwesomeAPI não use muito 'erro: true', é bom manter para APIs genéricas
                  print(f"\nNão foi possível encontrar a cotação para '{moeda}'. Verifique o código da moeda.")
                  print("Lembre-se que algumas moedas podem não estar disponíveis ou o código pode estar incorreto.")
                  return
-            elif chave_moeda_brl not in dados:
+            elif chaveMoedaBRL not in dados:
                 print(f"\nNão foi possível encontrar a cotação para '{moeda}'. Verifique o código da moeda.")
                 print("Lembre-se que algumas moedas podem não estar disponíveis ou o código pode estar incorreto.")
                 return
 
-            cotacao_info = dados[chave_moeda_brl]
+            cotacaoInfo = dados[chaveMoedaBRL]
 
             # Extraindo e formatando os dados
-            nome_moeda = cotacao_info.get('name', 'Nome não disponível')
-            valor_atual = float(cotacao_info.get('bid', 0))
-            valor_maximo = float(cotacao_info.get('high', 0))
-            valor_minimo = float(cotacao_info.get('low', 0))
-            timestamp = int(cotacao_info.get('timestamp', 0))
+            nomeMoeda = cotacaoInfo.get('name', 'Nome não disponível')
+            valorAtual = float(cotacaoInfo.get('bid', 0))
+            valorMaximo = float(cotacaoInfo.get('high', 0))
+            valorMinimo = float(cotacaoInfo.get('low', 0))
+            timestamp = int(cotacaoInfo.get('timestamp', 0))
 
             # Conversão do timestamp para data/hora legível
-            data_hora_atualizacao = datetime.fromtimestamp(timestamp)
+            dataHoraAtualizacao = datetime.fromtimestamp(timestamp)
 
-            print(f"\n--- Cotação de {nome_moeda} ({moeda}) para Real (BRL) ---")
-            print(f"Cotação Atual (Compra): R$ {valor_atual:.4f}")
-            print(f"Valor Máximo (24h): R$ {valor_maximo:.4f}")
-            print(f"Valor Mínimo (24h): R$ {valor_minimo:.4f}")
-            print(f"Última Atualização: {data_hora_atualizacao.strftime('%d/%m/%Y %H:%M:%S')}")
+            print(f"\n--- Cotação de {nomeMoeda} ({moeda}) para Real (BRL) ---")
+            print(f"Cotação Atual (Compra): R$ {valorAtual:.4f}")
+            print(f"Valor Máximo (24h): R$ {valorMaximo:.4f}")
+            print(f"Valor Mínimo (24h): R$ {valorMinimo:.4f}")
+            print(f"Última Atualização: {dataHoraAtualizacao.strftime('%d/%m/%Y %H:%M:%S')}")
             print("--------------------------------------------------")
             return # Sai da função se a consulta for bem-sucedida
 
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 429:
-                tempo_espera = atraso_inicial * (2 ** tentativa) # Atraso exponencial
-                print(f"Erro 429: Limite de requisições excedido. Tentando novamente em {tempo_espera:.1f} segundos...")
-                time.sleep(tempo_espera)
+                tempoEspera = atrasoInicial * (2 ** tentativa) # Atraso exponencial
+                print(f"Erro 429: Limite de requisições excedido. Tentando novamente em {tempoEspera:.1f} segundos...")
+                time.sleep(tempoEspera)
             else:
                 print(f"\nErro HTTP: {e}")
                 return # Sai da função para outros erros HTTP
@@ -99,7 +99,7 @@ def consultar_cotacao_moeda():
             print(f"\nOcorreu um erro inesperado: {e}")
             return
             
-    print(f"\nFalha ao obter a cotação após {tentativas_maximas} tentativas. Por favor, tente novamente mais tarde.")
+    print(f"\nFalha ao obter a cotação após {tentativasMaximas} tentativas. Por favor, tente novamente mais tarde.")
 
 
 if __name__ == "__main__":

@@ -11,8 +11,8 @@ calcular o IMC e fornecer a classificação de acordo com a tabela padrão de IM
 Para os demais cenários: classificacao = "Obeso"
 """
 
-peso = float(input("Informe seu peso:"))
-altura = float(input("Informe sua altura:"))
+peso = float(input("Informe seu peso em kg:"))
+altura = float(input("Informe sua altura em metros:"))
 
 imc = peso / (altura ** 2)
 
@@ -25,6 +25,6 @@ elif imc < 30:
 else:
     classificacao = "Obeso"
 
-print(f"Seu IMC é: {imc:.2f}")
+print(f"Seu IMC é: {imc:.1f}")
 print(f"Classificação: {classificacao}" )
   

@@ -7,9 +7,9 @@ O usuário deve informar a temperatura, a unidade de origem e a unidade para qua
 tempDigitada = float(input("Informe a temperatura:"))
 
 print("informe a unidade de origem:")
-unidadeOrigem = input("digite C para Celsius, F para Fahrenheit ou K para Kelvin:")
+unidadeOrigem = input("digite C para Celsius, F para Fahrenheit ou K para Kelvin:").upper()
 print("Informe qual a unidade de destino:")
-unidadeDestino = input("digite C para Celsius, F para Fahrenheit ou K para Kelvin:") 
+unidadeDestino = input("digite C para Celsius, F para Fahrenheit ou K para Kelvin:").upper()
 
 temperatura = tempDigitada
 

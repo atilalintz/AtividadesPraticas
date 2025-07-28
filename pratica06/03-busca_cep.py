@@ -27,10 +27,10 @@ def consultar_cep():
         else:
             break # Sai do loop se o CEP for válido
 
-    responsta_url = f"https://viacep.com.br/ws/{cep}/json/"
+    responstaUrl = f"https://viacep.com.br/ws/{cep}/json/"
 
     try:
-        response = requests.get(responsta_url)
+        response = requests.get(responstaUrl)
         response.raise_for_status()  # Lança um erro para status de resposta HTTP ruins (4xx ou 5xx)
         dados = response.json()
 

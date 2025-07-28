@@ -15,14 +15,14 @@ print("Para parar e ver a média, digite 'fim'.")
 
 while True:
     # Solicita a entrada da nota e já a prepara (remove espaços e converte para minúsculas)
-    entrada_usuario = input("Digite a nota (ou 'fim'): ").strip().lower()
+    entradaUsuario = input("Digite a nota (ou 'fim'): ").strip().lower()
 
-    if entrada_usuario == 'fim':
+    if entradaUsuario == 'fim':
         break  # Se o usuário digitar 'fim', saímos do loop de entrada de notas
 
     try:
         # Tenta converter a entrada para um número decimal (float)
-        nota = float(entrada_usuario)
+        nota = float(entradaUsuario)
         
         # Verifica se a nota está dentro do intervalo permitido (0 a 10)
         if 0 <= nota <= 10:
@@ -43,14 +43,14 @@ Agora, vamos ver a média da turma e quantas notas válidas foram registradas.
 print("\n--- Relatório da Turma ---")
 
 if notas:  # Verifica se a lista de notas não está vazia
-    total_notas_validas = len(notas)  # Conta quantas notas válidas foram registradas
-    soma_das_notas = sum(notas)      # Soma todas as notas válidas
+    totalNotasValidas = len(notas)  # Conta quantas notas válidas foram registradas
+    somaNotas = sum(notas)      # Soma todas as notas válidas
     
-    media_final = soma_das_notas / total_notas_validas  # Calcula a média
+    mediaFinal = somaNotas / totalNotasValidas  # Calcula a média
     
-    print(f"Total de notas válidas registradas: {total_notas_validas}")
+    print(f"Total de notas válidas registradas: {totalNotasValidas}")
     # Exibe a média com duas casas decimais
-    print(f"Média final da turma: {media_final:.2f}") 
+    print(f"Média final da turma: {mediaFinal:.2f}") 
 else:
     # Se nenhuma nota foi registrada, informa o usuário
     print("Nenhuma nota válida foi registrada para calcular a média.")
