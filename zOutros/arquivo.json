@@ -1,0 +1,9 @@
+{
+    "nome": "João",
+    "idade": 30,
+    "cidade": "São Paulo",
+    "profissão": [
+        "Engenheiro",
+        "Professor"
+    ]
+}
